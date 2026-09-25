@@ -6,8 +6,8 @@ import PageHero from '../components/PageHero'
 import laboratoryImg from '../assets/Laboratory.jpg'
 
 export default function Contact() {
-  const whatsappNumber = '0783289521'
-  const whatsappHref = `https://wa.me/256783289521?text=${encodeURIComponent('Hello Riscella Enterprises Limited, I would like to request a quote for laboratory products and supplies.')}`
+  const whatsappNumber = '0705728194'
+  const whatsappHref = `https://wa.me/256705728194?text=${encodeURIComponent('Hello Riscella Enterprises Limited, I would like to request a quote for laboratory products and supplies.')}`
 
   return (
     <>
@@ -57,7 +57,7 @@ export default function Contact() {
                 <div className="contact-quick-card whatsapp-card">
                   <span className="contact-card-tag">Fastest response</span>
                   <h3>Chat on WhatsApp</h3>
-                  <p>Reach our team directly on 0783 289 521.</p>
+                  <p>Reach our team directly on 0705 728194.</p>
                   <a
                     className="btn btn-whatsapp"
                     href={whatsappHref}

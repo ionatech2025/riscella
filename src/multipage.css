@@ -1,13 +1,13 @@
 
 :root {
-  --riscella-green: #0f766e;
-  --riscella-green-dark: #075e58;
-  --riscella-ink: #102a2a;
-  --riscella-muted: #5e7070;
-  --riscella-paper: #f4f8f6;
+  --riscella-green: #31327d;
+  --riscella-green-dark: #23245e;
+  --riscella-ink: #1d2148;
+  --riscella-muted: #596078;
+  --riscella-paper: #f7f7fc;
   --riscella-white: #ffffff;
-  --riscella-line: #dce8e5;
-  --riscella-shadow: 0 18px 50px rgba(12, 49, 46, .09);
+  --riscella-line: #e1e2f0;
+  --riscella-shadow: 0 18px 50px rgba(35, 36, 94, .14);
   --riscella-radius: 18px;
 }
 
@@ -59,7 +59,7 @@ a { color: inherit; }
   font-weight: 700;
   letter-spacing: .08em;
   font-size: 1.65rem;
-  color:#0d4f82;
+  color: var(--riscella-green);
 }
 
 .brand-ltd {
@@ -96,7 +96,7 @@ a { color: inherit; }
 .mobile-menu a:hover,
 .mobile-menu a.active {
   color: var(--riscella-green);
-  background: #edf7f5;
+  background: #fff4d8;
 }
 
 .btn {
@@ -115,7 +115,7 @@ a { color: inherit; }
 
 .btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(12, 49, 46, .12);
+  box-shadow: 0 8px 22px rgba(35, 36, 94, .16);
 }
 
 .btn-teal {
@@ -144,7 +144,7 @@ a { color: inherit; }
 }
 
 .btn-ghost-dark:hover {
-  background: rgba(15, 118, 110, 0.06);
+  background: rgba(49, 50, 125, 0.06);
 }
 
 .menu-toggle { display: none; }
@@ -184,7 +184,7 @@ a { color: inherit; }
   text-align: left;
 }
 
-.hero-copy .section-kicker { color: #a8e2da; }
+.hero-copy .section-kicker { color: #f2ad2f; }
 
 .hero h1 {
   max-width: 900px;
@@ -301,8 +301,8 @@ a { color: inherit; }
   border-radius: 13px;
   display: grid;
   place-items: center;
-  color: var(--riscella-green);
-  background: #e7f4f1;
+  color: #a86d0d;
+  background: #fff4d8;
   margin-bottom: 18px;
 }
 
@@ -330,7 +330,7 @@ a { color: inherit; }
   margin-top: 30px;
   padding: 34px;
   border-radius: var(--riscella-radius);
-  background: linear-gradient(120deg, #083f3b, #0f766e);
+  background: linear-gradient(120deg, #23245e, #31327d);
   color: white;
   display: flex;
   align-items: center;
@@ -338,7 +338,7 @@ a { color: inherit; }
   gap: 30px;
 }
 
-.home-hook .section-kicker { color: #a8e2da; }
+.home-hook .section-kicker { color: #f2ad2f; }
 .home-hook h2 { margin: 0 0 10px; font-size: clamp(1.6rem, 3vw, 2.4rem); }
 .home-hook p { max-width: 750px; color: rgba(255,255,255,.84); }
 
@@ -357,7 +357,7 @@ a { color: inherit; }
   padding: 16px 14px;
   border: 1px solid rgba(12, 45, 64, 0.12);
   border-radius: 12px;
-  background: #0d2d45;
+  background: #31327d;
   color: #fff;
   font-weight: 700;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
@@ -374,12 +374,12 @@ a { color: inherit; }
   width: 36px;
   height: 36px;
   margin: 0 auto 8px;
-  border: 2px solid rgba(255, 255, 255, 0.75);
+  border: 2px solid #f2ad2f;
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-size: 0.95rem;
-  color: #fff;
+  color: #f2ad2f;
 }
 
 .logo-merck {
@@ -475,7 +475,7 @@ a { color: inherit; }
 .page-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(4, 27, 27, .9), rgba(4, 27, 27, .62) 55%, rgba(4, 27, 27, .3));
+  background: linear-gradient(90deg, rgba(35, 36, 94, .9), rgba(49, 50, 125, .62) 55%, rgba(35, 36, 94, .3));
   z-index: 1;
 }
 
@@ -484,7 +484,7 @@ a { color: inherit; }
   z-index: 2;
   max-width: 980px;
 }
-.page-hero .section-kicker { color: #a8e2da; }
+.page-hero .section-kicker { color: #f2ad2f; }
 .page-hero h1 {
   max-width: 900px;
   margin: 8px 0 18px;
@@ -523,7 +523,7 @@ a { color: inherit; }
 .value {
   padding: 20px;
   border-left: 3px solid var(--riscella-green);
-  background: #f8fbfa;
+  background: #f7f7fc;
 }
 
 .value h4 { margin: 12px 0 5px; }
@@ -539,7 +539,7 @@ a { color: inherit; }
 .chip {
   padding: 6px 12px;
   border-radius: 999px;
-  background: #e8f3f1;
+  background: #fff4d8;
   color: var(--riscella-green-dark);
   font-size: .88rem;
   font-weight: 700;
@@ -583,7 +583,7 @@ a { color: inherit; }
 
 .category-card {
   width: min(100%, 520px);
-  background: rgb(94, 150, 152);
+  background: var(--riscella-green);
   border: 1px solid var(--riscella-green-dark);
   border-radius: var(--riscella-radius);
   padding: 25px;
@@ -611,7 +611,7 @@ a { color: inherit; }
 
 .category-range,
 .category-applications {
-  color: #0d4f82;
+  color: #f2ad2f;
 }
 
 .category-range strong,
@@ -649,7 +649,7 @@ a { color: inherit; }
   margin-top: 35px;
   padding: 25px;
   border-radius: var(--riscella-radius);
-  background: #e8f5f2;
+  background: #fff4d8;
 }
 
 .compliance-callout h3 { margin: 0; }
@@ -693,18 +693,18 @@ a { color: inherit; }
   justify-content: space-between;
   gap: 25px;
   padding: 30px;
-  background: #edf7f5;
+  background: #fff4d8;
   border-radius: var(--riscella-radius);
 }
 
 .order-details h2 { margin: 0 0 8px; }
 
 .contact {
-  background: linear-gradient(135deg, #063e3a, #0f766e);
+  background: linear-gradient(135deg, #23245e, #31327d);
   color: #fff;
 }
 
-.contact .section-kicker { color: #a8e2da; }
+.contact .section-kicker { color: #f2ad2f; }
 
 .contact-grid {
   display: grid;
@@ -764,7 +764,7 @@ a { color: inherit; }
   font-size: .7rem;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: #a8e2da;
+  color: #f2ad2f;
   font-weight: 800;
 }
 
@@ -819,12 +819,12 @@ a { color: inherit; }
 .form input,
 .form textarea {
   width: 100%;
-  border: 1px solid #ccdcd8;
+  border: 1px solid #d9d9eb;
   border-radius: 10px;
   padding: 13px 14px;
   font: inherit;
   color: var(--riscella-ink);
-  background: #fbfdfc;
+  background: #fbfbff;
 }
 
 .form input::placeholder,
@@ -834,7 +834,7 @@ a { color: inherit; }
 
 .form input:focus,
 .form textarea:focus {
-  outline: 2px solid rgba(15,118,110,.18);
+  outline: 2px solid rgba(49,50,125,.18);
   border-color: var(--riscella-green);
 }
 
@@ -857,7 +857,7 @@ a { color: inherit; }
   gap: 30px;
 }
 
-.footer-inner p { margin: 4px 0; color: #a9c4c0; }
+.footer-inner p { margin: 4px 0; color: #c4c6df; }
 .footer-brand { color: #fff; font-weight: 850; letter-spacing: .08em; }
 
 .footer-links {
@@ -868,7 +868,7 @@ a { color: inherit; }
 
 .footer-links a {
   text-decoration: none;
-  color: #c7ddda;
+  color: #d5d6ea;
   font-size: .9rem;
 }
 

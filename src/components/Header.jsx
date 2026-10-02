@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { Icon } from '../icons'
+import riscellaLogo from '../assets/riscella-logo.png'
 
 const links = [
   { to: '/', label: 'Home', end: true },
@@ -20,12 +21,14 @@ export default function Header() {
     <header className="site-header">
       <div className="wrap nav">
         <Link className="brand" to="/" onClick={closeMenu}>
-          <span className="brand-name">
-            RISCELLA 
-            </span>
-            <span className="brand-ltd">ENTERPRISES LTD</span>
-          
-          <span className="brand-tag">EXCEEDING IMAGINATIONS</span>
+          <div className="brand-lockup">
+            <img className="brand-logo" src={riscellaLogo} alt="Riscella Enterprises Limited logo" />
+            <div className="brand-copy">
+              <span className="brand-name">RISCELLA</span>
+              <span className="brand-ltd">ENTERPRISES LTD</span>
+              <span className="brand-tag">EXCEEDING IMAGINATIONS</span>
+            </div>
+          </div>
         </Link>
 
         <nav aria-label="Primary">

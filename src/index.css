@@ -1,18 +1,18 @@
 :root {
-  --navy: #0b1b33;
-  --navy-deep: #071224;
-  --navy-mid: #123056;
-  --navy-line: #1e3350;
-  --teal: #14c7ae;
-  --teal-dark: #0a7a6e;
-  --teal-soft: #e4f7f4;
-  --ink: #101826;
+  --navy: #31327d;
+  --navy-deep: #23245e;
+  --navy-mid: #3a3b89;
+  --navy-line: #5658a0;
+  --teal: #f2ad2f;
+  --teal-dark: #a86d0d;
+  --teal-soft: #fff4d8;
+  --ink: #1d2148;
   --slate: #54606f;
   --muted: #7a8796;
   --paper: #f4f7f8;
   --line: #e2e6ea;
   --white: #ffffff;
-  --amber: #c97a2b;
+  --amber: #f2ad2f;
   --heading: 'Space Grotesk', 'Segoe UI', sans-serif;
   --sans: 'IBM Plex Sans', 'Segoe UI', sans-serif;
 }
@@ -94,12 +94,35 @@ textarea {
   line-height: 1.05;
 }
 
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo,
+.footer-logo,
+.page-hero-logo {
+  display: block;
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .brand-name {
   font-family: var(--heading);
   font-weight: 700;
   font-size: 1.45rem;
   letter-spacing: 0.04em;
-  color: rgb(2, 2, 99);
+  color: var(--navy);
 }
 
 .brand-ltd {
@@ -157,17 +180,17 @@ textarea {
 }
 
 .btn-teal:hover {
-  background: #11b39c;
+  background: #d9961c;
 }
 
 .btn-ghost {
-  background: rgba(7, 18, 36, 0.35);
+  background: rgba(35, 36, 94, 0.35);
   color: var(--white);
   border: 1px solid rgba(255, 255, 255, 0.28);
 }
 
 .btn-ghost:hover {
-  background: rgba(7, 18, 36, 0.55);
+  background: rgba(35, 36, 94, 0.55);
 }
 
 .menu-toggle {
@@ -195,7 +218,7 @@ textarea {
   min-height: 320px;
   color: var(--white);
   overflow: hidden;
-  background: #4e94e4;
+  background: var(--navy);
 }
 
 
@@ -213,7 +236,7 @@ textarea {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(7, 18, 36, 0.92) 0%, rgba(7, 24, 48, 0.72) 42%, rgba(7, 18, 36, 0.18) 100%);
+    linear-gradient(90deg, rgba(35, 36, 94, 0.92) 0%, rgba(49, 50, 125, 0.72) 42%, rgba(35, 36, 94, 0.18) 100%);
 }
 
 .hero-copy {
@@ -278,6 +301,19 @@ textarea {
   position: relative;
   z-index: 2;
   color: white;
+}
+
+.page-hero-brand {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.page-hero-logo {
+  width: 86px;
+  height: 86px;
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
 .page-hero::before {
@@ -378,7 +414,7 @@ textarea {
   min-height: 92px;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: var(--navy-mid);
+  background: var(--navy);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -390,7 +426,7 @@ textarea {
 .brand-mark {
   width: 28px;
   height: 28px;
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid var(--teal);
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -460,11 +496,11 @@ textarea {
 
 .panel {
   border: 1px solid var(--line);
-  background: var(--teal);
+  background: var(--teal-soft);
   border-radius: 6px;
   padding: 22px;
-  color: var(--navy-mid);
-  border-top: 4px solid var(--navy-deep);
+  color: var(--navy);
+  border-top: 4px solid var(--teal);
   
 }
 
@@ -745,7 +781,7 @@ textarea {
 }
 
 .site-footer {
-  background: blue;
+  background: var(--navy-deep);
   border-top: 1px solid var(--navy-line);
   color: #6e7c90;
   font-size: 0.78rem;
@@ -758,6 +794,17 @@ textarea {
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.footer-brand-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo {
+  width: 52px;
+  height: 52px;
 }
 
 .footer-brand {

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { Icon } from '../icons'
-import riscellaLogo from '../assets/riscella-logo.png'
+// import riscellaLogo from '../assets/riscella-logo.png'
+import riscellaLogo from '../assets/riscella-logo.webp'
 
 const links = [
   { to: '/', label: 'Home', end: true },
@@ -26,7 +27,8 @@ export default function Header() {
             <div className="brand-copy">
               <span className="brand-name">RISCELLA</span>
               <span className="brand-ltd">ENTERPRISES LTD</span>
-              <span className="brand-tag">EXCEEDING IMAGINATIONS</span>
+              {/* <span className="brand-tag">EXCEEDING IMAGINATIONS</span> */}
+              <span className="brand-tag">QUALITY WITHOUT QUESTIONS</span>
             </div>
           </div>
         </Link>

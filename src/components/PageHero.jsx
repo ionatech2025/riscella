@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import riscellaLogo from '../assets/riscella-logo.png'
+// import riscellaLogo from '../assets/riscella-logo.png'
 
 export default function PageHero({ eyebrow, title, text,  backgroundImage, action = true }) {
   return (

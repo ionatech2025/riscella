@@ -6,7 +6,8 @@ export const NAV_LINKS = [
   { href: '#compliance', label: 'Compliance' },
 ]
 
-export const PHONES = ['+256 705 728 194', '+256 756 890 931', '+256 745 058 182']
+// export const PHONES = ['+256 705 728 194', '+256 756 890 931', '+256 745 058 182']
+export const PHONES = ['+256 705 728 194', '+256 779 062 019']
 
 export const CONTACT = {
   address: 'Sir Apollo Kaggwa Road, Wandegeya, Kampala, Uganda',

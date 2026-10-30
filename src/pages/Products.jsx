@@ -2,7 +2,9 @@
 import { CATEGORIES, BRANDS } from '../data'
 import { Icon } from '../icons'
 import PageHero from '../components/PageHero'
-import product3Img from '../assets/image3.png'
+// import product3Img from '../assets/image3.png'
+import { Link } from 'react-router-dom'
+import product3Img from '../assets/image3.webp'
 
 const catalogueFiles = [
   {
@@ -134,6 +136,21 @@ export default function Products() {
               </article>
             ))}
           </div>
+
+                    <div className="how-to-pdf">
+            <h3>Three simple steps to secure your bulk quotation</h3>
+            <ol>
+              <li><strong>Open the PDF</strong> and find your SKU, CAS number or part number.</li>
+              <li><strong>Compile your manifest:</strong> quantities, sizes and delivery frequency.</li>
+              <li><strong>Paste or upload it</strong> in our RFQ form. We reply within 24 business hours.</li>
+            </ol>
+            <Link className="btn btn-teal" to="/contact#rfq">Go to the Request for Quote form</Link>
+          </div>
+
+          <p className="direct-import">
+            <strong>Direct authorized importing:</strong> Riscella imports listed materials directly
+            from authorized global manufacturers, so every catalogue item maps to authentic factory batches.
+          </p>
         </div>
       </section>
     </>

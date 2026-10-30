@@ -78,7 +78,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="contact-form-panel">
+            <div className="contact-form-panel" id="rfq">
               <p className="section-kicker">Request a Quote</p>
               <h2>Send your requirements</h2>
               <p className="request-help-text">

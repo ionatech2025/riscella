@@ -7,13 +7,12 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <img className="hero-bg" src={heroLabImg} alt="Laboratory" />
+        <img className="hero-bg" src={heroLabImg} alt="" />
         <div className="hero-shade" />
 
         <div className="wrap hero-copy">
           <p className="section-kicker">RISCELLA ENTERPRISES LIMITED</p>
-          <h1>Exceeding Imaginations in Scientific Sourcing &amp; Technical Deployment</h1>
-
+        <h1>Premium Laboratory Chemicals, Reagents, Consumables &amp; Safety Equipment</h1>
           <div className="hero-actions">
             <p>
               Empowering East African laboratories with compliance-verified
@@ -25,9 +24,9 @@ export default function Home() {
               <Link className="btn btn-teal" to="/contact">
                 Request a Quote
               </Link>
-              <Link className="btn btn-ghost" to="/products">
-                Explore Our Product Categories
-              </Link>
+             <Link className="btn btn-ghost" to="/products#catalogue-downloads">
+  Download Product Catalogs
+</Link>
             </div>
           </div>
         </div>

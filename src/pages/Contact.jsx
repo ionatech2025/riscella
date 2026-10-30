@@ -6,7 +6,6 @@ import PageHero from '../components/PageHero'
 import laboratoryImg from '../assets/Laboratory.jpg'
 
 export default function Contact() {
-  const whatsappNumber = '0705728194'
   const whatsappHref = `https://wa.me/256705728194?text=${encodeURIComponent('Hello Riscella Enterprises Limited, I would like to request a quote for laboratory products and supplies.')}`
 
   return (

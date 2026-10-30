@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { CONTACT } from '../data'
 
 const categories = [
   'Chemical Reagents & Media',
@@ -10,6 +11,18 @@ const categories = [
 export default function QuoteForm() {
   const [submitted, setSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState('')
+  const [submissionMessage, setSubmissionMessage] = useState('')
+  const [submissionTitle, setSubmissionTitle] = useState('RFQ received')
+
+  function onAttachmentChange(event) {
+    const file = event.currentTarget.files?.[0]
+    if (file && file.size > 10 * 1024 * 1024) {
+      event.currentTarget.value = ''
+      setSubmitError('Please choose an attachment smaller than 10MB.')
+    } else {
+      setSubmitError('')
+    }
+  }
 
   async function onSubmit(event) {
     event.preventDefault()
@@ -17,7 +30,41 @@ export default function QuoteForm() {
 
     try {
       const form = event.currentTarget
-      const response = await fetch('/', {
+      const endpoint = import.meta.env.VITE_RFQ_ENDPOINT
+
+      if (!endpoint) {
+        const values = new FormData(form)
+        const attachment = values.get('attachment')
+        const attachmentName =
+          attachment instanceof File && attachment.name
+            ? `\nAttachment selected: ${attachment.name} (please attach it to this email)`
+            : ''
+        const body = [
+          `Full name: ${values.get('name')}`,
+          `Company / institution: ${values.get('company')}`,
+          `Corporate email: ${values.get('email')}`,
+          `Industry / sector: ${values.get('sector')}`,
+          `Inventory categories: ${values.getAll('categories').join(', ') || 'Not specified'}`,
+          `Requested timeline: ${values.get('timeline')}`,
+          `Specialized handling: ${values.get('handling')}`,
+          `Payment terms: ${values.get('payment')}`,
+          '',
+          'Itemized requirements:',
+          values.get('requirements'),
+          attachmentName,
+        ].join('\n')
+
+        window.location.href =
+          `mailto:${CONTACT.email}?subject=${encodeURIComponent('B2B RFQ - Riscella Enterprises')}&body=${encodeURIComponent(body)}`
+        setSubmissionTitle('RFQ prepared')
+        setSubmissionMessage(
+          'Your email app is opening with your RFQ. If you selected a file, attach it to the email before sending.',
+        )
+        setSubmitted(true)
+        return
+      }
+
+      const response = await fetch(endpoint, {
         method: 'POST',
         body: new FormData(form),
       })
@@ -26,6 +73,9 @@ export default function QuoteForm() {
         throw new Error(`RFQ submission failed with status ${response.status}`)
       }
 
+      setSubmissionMessage(
+        'Thank you. Your request has been assigned to a technical procurement specialist. A formal quotation and lead-time analysis will be generated within 24 business hours.',
+      )
       setSubmitted(true)
     } catch (error) {
       console.error('Unable to submit RFQ form.', error)
@@ -36,12 +86,8 @@ export default function QuoteForm() {
   if (submitted) {
     return (
       <div className="form-success" role="status">
-        <h3>RFQ received</h3>
-        <p>
-          Thank you. Your request has been assigned to a technical procurement
-          specialist. A formal quotation and lead-time analysis will be
-          generated within 24 business hours.
-        </p>
+        <h3>{submissionTitle}</h3>
+        <p>{submissionMessage}</p>
       </div>
     )
   }
@@ -51,7 +97,6 @@ export default function QuoteForm() {
       className="form rfq-form"
       name="b2b-rfq"
       method="POST"
-      data-netlify="true"
       encType="multipart/form-data"
       onSubmit={onSubmit}
     >
@@ -115,7 +160,7 @@ export default function QuoteForm() {
             <span className="upload-icon">+</span>
             <span><strong>Attach your procurement spreadsheet, RFQ, or BOM</strong><small>.pdf, .xlsx, .csv, .docx - maximum 10MB</small></span>
           </label>
-          <input id="rfq-attachment" name="attachment" type="file" accept=".pdf,.xlsx,.csv,.docx" />
+          <input id="rfq-attachment" name="attachment" type="file" accept=".pdf,.xlsx,.csv,.docx" onChange={onAttachmentChange} />
         </div>
       </fieldset>
 

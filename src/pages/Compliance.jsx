@@ -1,4 +1,4 @@
-import { ADVANTAGES, REGULATORY } from '../data'
+import { ADVANTAGES, COMPLIANCE_FRAMEWORKS, REGULATORY } from '../data'
 import { Icon } from '../icons'
 import PageHero from '../components/PageHero'
 import laboratoryImg from '../assets/reagent.jpg'
@@ -38,6 +38,22 @@ export default function Compliance() {
                 and applicable requirements.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <p className="section-kicker">Core compliance frameworks</p>
+          <h2 className="heading-lg">Traceability that supports audit readiness.</h2>
+          <div className="compliance-framework-grid">
+            {COMPLIANCE_FRAMEWORKS.map((item) => (
+              <article className="compliance-framework" key={item.title}>
+                <div className="framework-icon"><Icon name={item.icon} /></div>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

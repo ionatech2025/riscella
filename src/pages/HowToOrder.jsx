@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { STEPS } from '../data'
+import { PROCUREMENT_WORKFLOW, STEPS } from '../data'
+import { Icon } from '../icons'
 import PageHero from '../components/PageHero'
 import equipmentImg from '../assets/protectives.jpg'
 
@@ -60,6 +61,24 @@ export default function HowToOrder() {
               packaging for hazardous chemicals where applicable, supporting
               direct delivery to the laboratory or store.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section paper workflow-section">
+        <div className="wrap">
+          <p className="section-kicker">From submission to dockside delivery</p>
+          <h2 className="heading-lg">The Riscella RFQ processing workflow</h2>
+          <div className="workflow">
+            {PROCUREMENT_WORKFLOW.map((step) => (
+              <article className="workflow-step" key={step.phase}>
+                <div className="workflow-marker"><Icon name={step.icon} /></div>
+                <p className="workflow-phase">{step.phase}</p>
+                <h3>{step.title}</h3>
+                <p className="workflow-timeline">{step.timeline}</p>
+                <p>{step.desc}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

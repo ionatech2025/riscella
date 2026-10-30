@@ -1,4 +1,4 @@
-import { CONTACT, PHONES } from '../data'
+import { CONTACT, PHONES, PROCUREMENT_FAQ } from '../data'
 import { Icon } from '../icons'
 import { Link } from 'react-router-dom'
 import QuoteForm from '../components/QuoteForm'
@@ -87,6 +87,28 @@ export default function Contact() {
               </p>
               <QuoteForm />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section faq-section">
+        <div className="wrap faq-layout">
+          <div>
+            <p className="section-kicker">Procurement &amp; compliance</p>
+            <h2 className="heading-lg">Answers for institutional buyers.</h2>
+            <p className="lede">
+              Review common questions while preparing your requirements. For
+              product-specific guidance, include your SKUs and standards in the
+              RFQ above.
+            </p>
+          </div>
+          <div className="faq-list">
+            {PROCUREMENT_FAQ.map((item) => (
+              <details className="faq-item" key={item.question}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

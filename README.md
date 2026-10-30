@@ -58,3 +58,7 @@ npm run build
 
 The endpoint must accept a `POST` multipart form request. Do not put private
 API keys in `VITE_` variables because Vite exposes them to the browser.
+
+Product resources are served from `public/catalogues/`. Keep catalogue
+filenames free of trailing spaces so download URLs remain reliable across
+hosting providers.

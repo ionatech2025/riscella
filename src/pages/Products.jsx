@@ -9,7 +9,7 @@ const catalogueFiles = [
     title: 'Riscella Product Catalogue',
     description:
       'Explore Riscella Enterprises Limited’s laboratory products, chemicals, consumables, equipment, and scientific portfolios.',
-    file: 'Riscella Product Catalogue .pdf',
+    file: 'Riscella Product Catalogue.pdf',
     type: 'Product Catalogue',
   },
   {
@@ -124,6 +124,7 @@ export default function Products() {
                   className="catalogue-download-link"
                   href={`${cataloguePath}${encodeURIComponent(catalogue.file)}`}
                   download={catalogue.file}
+                  aria-label={`Download ${catalogue.title} PDF`}
                 >
                   <Icon name="download" />
                   Download PDF

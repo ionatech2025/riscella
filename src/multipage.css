@@ -173,7 +173,7 @@ a { color: inherit; }
 .hero-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(4,27,27,.9), rgba(4,27,27,.62) 55%, rgba(4,27,27,.3));
+  background: linear-gradient(90deg, rgba(31, 41, 55, .58), rgba(71, 85, 105, .36) 55%, rgba(71, 85, 105, .08));
 }
 
 .hero-copy {
@@ -458,7 +458,7 @@ a { color: inherit; }
   align-items: center;
   overflow: hidden;
   padding: 100px 0 80px;
-  background: var(--riscella-ink);
+  background: #52606d;
   color: #fff;
 }
 
@@ -475,7 +475,7 @@ a { color: inherit; }
 .page-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(35, 36, 94, .9), rgba(49, 50, 125, .62) 55%, rgba(35, 36, 94, .3));
+  background: linear-gradient(90deg, rgba(31, 41, 55, .58), rgba(71, 85, 105, .36) 55%, rgba(71, 85, 105, .08));
   z-index: 1;
 }
 
@@ -606,12 +606,12 @@ a { color: inherit; }
 
 .category-card-header h3 {
   margin: 0;
-  color: #fff;
+  color: #f2ad2f;
 }
 
 .category-range,
 .category-applications {
-  color: #f2ad2f;
+  color: #fff;
 }
 
 .category-range strong,
@@ -962,6 +962,135 @@ a { color: inherit; }
   .contact-form-panel { padding: 23px; }
 }
 
+
+
+/* =========================================
+   RISCELLA HOMEPAGE REVIEW IMPROVEMENTS
+   ========================================= */
+
+/* Larger, more prominent homepage hero */
+.hero {
+  min-height: 520px;
+}
+
+.hero-copy {
+  max-width: 1000px;
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+.hero-copy h1 {
+  max-width: 900px;
+  font-size: clamp(2.1rem, 4.2vw, 3.5rem);
+  line-height: 1.15;
+  margin: 16px 0 22px;
+}
+
+.hero-actions {
+  max-width: 850px;
+}
+
+.hero-actions > p {
+  max-width: 760px;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.hero-buttons {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Nine responsive product categories */
+.home-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.home-category-grid .mini-card {
+  height: 100%;
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.home-category-grid .mini-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(12, 49, 46, 0.10);
+}
+
+.home-category-grid .mini-card h3 {
+  margin: 18px 0 10px;
+  color: var(--heading);
+}
+
+.home-category-grid .mini-card p {
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.home-intro {
+  max-width: 800px;
+  line-height: 1.8;
+}
+
+.home-hook h2 {
+  color: #fff;
+  line-height: 1.3;
+}
+
+.home-hook p {
+  line-height: 1.8;
+}
+
+/* Tablet layout */
+@media (max-width: 960px) {
+  .home-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 760px) {
+  .hero {
+    min-height: 480px;
+  }
+
+  .hero-copy {
+    padding: 55px 20px;
+  }
+
+  .hero-copy h1 {
+    font-size: 2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-buttons .btn {
+    text-align: center;
+    width: 100%;
+  }
+
+  .home-category-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .home-hook {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px;
+  }
+
+  .home-hook .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
 
 
 /* =========================================

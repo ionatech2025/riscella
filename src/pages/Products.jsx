@@ -11,6 +11,7 @@ const catalogueFiles = [
       'Explore Riscella Enterprises Limited’s laboratory products, chemicals, consumables, equipment, and scientific portfolios.',
     file: 'Riscella Product Catalogue.pdf',
     type: 'Product Catalogue',
+    size: '3.2 MB',
   },
   {
     title: 'Riscella Company Profile',
@@ -18,6 +19,7 @@ const catalogueFiles = [
       'Learn about Riscella Enterprises Limited, its business capabilities, product portfolios, and commitment to serving laboratories and industries.',
     file: 'Riscella Company Profile.pdf',
     type: 'Company Profile',
+    size: '8.3 MB',
   },
 ]
 

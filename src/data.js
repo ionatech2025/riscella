@@ -6,7 +6,7 @@ export const NAV_LINKS = [
   { href: '#compliance', label: 'Compliance' },
 ]
 
-// export const PHONES = ['+256 705 728 194', '+256 756 890 931', '+256 745 058 182']
+
 export const PHONES = ['+256 705 728 194', '+256 779 062 019']
 
 export const CONTACT = {
@@ -14,31 +14,6 @@ export const CONTACT = {
   poBox: 'P.O. Box 183428, Kampala',
   email: 'riscellaenterpriseslimited@gmail.com',
 }
-
-// export const HOME_CATEGORIES = [
-//   {
-//     icon: 'flask',
-//     name: 'High-Purity Solvents',
-//     short:
-//       'High-purity solvents, ultra-quality acids, bases, and salts for routine synthesis and analysis.',
-//   },
-//   {
-//     icon: 'beaker',
-//     name: 'Analytical Reagents',
-//     short: 'Volumetric solutions, pH buffers, indicators, and biochemical reagents for QC testing.',
-//   },
-//   {
-//     icon: 'filter',
-//     name: 'Laboratory Consumables',
-//     short:
-//       'Borosilicate glassware, plasticware, filter papers, and syringe filters for liquid handling.',
-//   },
-//   {
-//     icon: 'shield',
-//     name: 'Protective Equipment',
-//     short: 'Nitrile and latex gloves, safety goggles, and lab aprons for personnel protection.',
-//   },
-// ]
 
 export const HOME_CATEGORIES = [
   {

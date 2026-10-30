@@ -1099,6 +1099,95 @@ a { color: inherit; }
   }
 }
 
+/* Contrast and surface hierarchy */
+:root {
+  --riscella-ink: #17213b;
+  --riscella-muted: #475569;
+  --riscella-paper: #f1f5f9;
+  --riscella-line: #cbd5e1;
+  --riscella-shadow: 0 16px 38px rgba(15, 23, 42, .11);
+}
+
+body {
+  color: var(--riscella-ink);
+  background: #fff;
+}
+
+.section:not(.paper) {
+  background: #fff;
+}
+
+.section.paper {
+  background: var(--riscella-paper);
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.section-title,
+.heading-lg,
+.mini-card h3,
+.feature-card h3,
+.brand-card h3,
+.sector-card h3,
+.reg h3,
+.client h4,
+.step h3,
+.panel h3 {
+  color: var(--riscella-ink);
+}
+
+.lede,
+.mini-card p,
+.feature-card p,
+.brand-card p,
+.sector-card p,
+.client p,
+.reg p,
+.value p,
+.step p,
+.panel p {
+  color: var(--riscella-muted);
+}
+
+.mini-card,
+.feature-card,
+.brand-card,
+.sector-card,
+.client,
+.reg,
+.panel,
+.step,
+.catalogue-card {
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, .08);
+}
+
+.mini-card:hover,
+.feature-card:hover,
+.brand-card:hover,
+.sector-card:hover {
+  border-color: #a8b7ca;
+  box-shadow: var(--riscella-shadow);
+}
+
+.brand-card,
+.catalogue-card {
+  background: #fff;
+}
+
+.note,
+.order-details,
+.compliance-callout {
+  border: 1px solid #e2c36d;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, .06);
+}
+
+.form-panel,
+.compliance-framework {
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, .06);
+}
+
 
 /* =========================================
    RISCELLA HOMEPAGE REVIEW IMPROVEMENTS

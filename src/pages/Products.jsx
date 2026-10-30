@@ -2,7 +2,6 @@
 import { CATEGORIES, BRANDS } from '../data'
 import { Icon } from '../icons'
 import PageHero from '../components/PageHero'
-// import product3Img from '../assets/image3.png'
 import { Link } from 'react-router-dom'
 import product3Img from '../assets/image3.webp'
 

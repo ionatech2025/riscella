@@ -25,7 +25,7 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollToTop />
       <a className="skip-link" href="#main">Skip to content</a>
       <Header />

@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Riscella Enterprises Limited</title>
+    <script>
+      const base = '/Riscella_Enterprises_Ltd'
+      const path = window.location.pathname
+      const route = path.startsWith(base) ? path.slice(base.length) || '/' : path
+      window.location.replace(
+        `${base}/index.html?redirect=${encodeURIComponent(route + window.location.search + window.location.hash)}`,
+      )
+    </script>
+  </head>
+  <body>Loading Riscella Enterprises Limited...</body>
+</html>

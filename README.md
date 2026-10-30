@@ -43,6 +43,10 @@ The built site is hosting-provider neutral. Any static host can serve the Vite
 build, provided it supports SPA fallback to `index.html` for routes such as
 `/products` and `/contact`.
 
+The repository includes a `_redirects` file for hosts such as Netlify and a
+GitHub Pages `404.html` fallback. Other static hosts should configure their
+equivalent rewrite from the listed application routes to `index.html`.
+
 The RFQ form works without a form vendor by opening the visitor's email client.
 If the selected attachment should be uploaded automatically, set
 `VITE_RFQ_ENDPOINT` to a serverless or form-processing endpoint before building:

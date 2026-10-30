@@ -614,6 +614,10 @@ a { color: inherit; }
   color: #fff;
 }
 
+.category-card p {
+  color: #fff;
+}
+
 .category-range strong,
 .category-applications strong {
   color: #fff;

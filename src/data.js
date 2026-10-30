@@ -14,28 +14,76 @@ export const CONTACT = {
   email: 'riscellaenterpriseslimited@gmail.com',
 }
 
+// export const HOME_CATEGORIES = [
+//   {
+//     icon: 'flask',
+//     name: 'High-Purity Solvents',
+//     short:
+//       'High-purity solvents, ultra-quality acids, bases, and salts for routine synthesis and analysis.',
+//   },
+//   {
+//     icon: 'beaker',
+//     name: 'Analytical Reagents',
+//     short: 'Volumetric solutions, pH buffers, indicators, and biochemical reagents for QC testing.',
+//   },
+//   {
+//     icon: 'filter',
+//     name: 'Laboratory Consumables',
+//     short:
+//       'Borosilicate glassware, plasticware, filter papers, and syringe filters for liquid handling.',
+//   },
+//   {
+//     icon: 'shield',
+//     name: 'Protective Equipment',
+//     short: 'Nitrile and latex gloves, safety goggles, and lab aprons for personnel protection.',
+//   },
+// ]
+
 export const HOME_CATEGORIES = [
   {
     icon: 'flask',
-    name: 'High-Purity Solvents',
-    short:
-      'High-purity solvents, ultra-quality acids, bases, and salts for routine synthesis and analysis.',
+    name: 'Chemicals',
+    short: 'High-quality laboratory chemicals, analytical reagents, solvents, acids, bases and analytical standards.',
+  },
+  {
+    icon: 'microscope',
+    name: 'Equipment',
+    short: 'Laboratory instruments and equipment for research, analysis, quality control and diagnostics.',
   },
   {
     icon: 'beaker',
-    name: 'Analytical Reagents',
-    short: 'Volumetric solutions, pH buffers, indicators, and biochemical reagents for QC testing.',
+    name: 'Labware',
+    short: 'Laboratory glassware, plasticware, beakers, flasks, pipettes and general laboratory accessories.',
   },
   {
     icon: 'filter',
     name: 'Laboratory Consumables',
-    short:
-      'Borosilicate glassware, plasticware, filter papers, and syringe filters for liquid handling.',
+    short: 'Essential disposable supplies including pipette tips, tubes, filters, petri dishes and more.',
+  },
+  {
+    icon: 'pill',
+    name: 'Microbiology',
+    short: 'Microbial culture media, stains, reagents and essential microbiology laboratory supplies.',
+  },
+  {
+    icon: 'clipboard',
+    name: 'Chromatography',
+    short: 'HPLC, GC and TLC products, chromatography columns, solvents and accessories.',
   },
   {
     icon: 'shield',
-    name: 'Protective Equipment',
-    short: 'Nitrile and latex gloves, safety goggles, and lab aprons for personnel protection.',
+    name: 'Safety',
+    short: 'Personal protective equipment, laboratory safety products and industrial protective gear.',
+  },
+  {
+    icon: 'package',
+    name: 'Rapid Tests',
+    short: 'Rapid diagnostic and screening test kits for laboratory and healthcare applications.',
+  },
+  {
+    icon: 'snow',
+    name: 'Water Analysis',
+    short: 'Water testing instruments, analytical reagents and monitoring solutions for water quality.',
   },
 ]
 

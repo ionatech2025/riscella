@@ -1,0 +1,400 @@
+/* =====================================================
+   Riscella section polish: catalogues, workflow, RFQ form
+   Loaded last so it wins over earlier rules.
+   ===================================================== */
+:root {
+  --rs-navy: #31327d;
+  --rs-navy-deep: #23245e;
+  --rs-amber: #f2ad2f;
+  --rs-amber-soft: #fff4d8;
+  --rs-ink: #1d2148;
+  --rs-muted: #596078;
+  --rs-line: #e1e2f0;
+  --rs-paper: #f7f7fc;
+  --rs-tint: #eceefb;
+  --rs-shadow: 0 14px 40px rgba(35, 36, 94, 0.1);
+}
+
+/* ---------- 1. Catalogue download cards ---------- */
+.catalogue-downloads .catalogue-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.catalogue-downloads .catalogue-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 28px;
+  background: #fff;
+  border: 1px solid var(--rs-line);
+  border-top: 4px solid var(--rs-amber);
+  border-radius: 16px;
+  box-shadow: var(--rs-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.catalogue-downloads .catalogue-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(35, 36, 94, 0.16);
+}
+
+.catalogue-downloads .catalogue-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: var(--rs-amber-soft);
+  color: var(--rs-navy);
+}
+
+.catalogue-downloads .catalogue-type {
+  margin: 0 0 6px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rs-navy);
+}
+
+.catalogue-downloads .catalogue-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.35rem;
+  color: var(--rs-ink);
+}
+
+.catalogue-downloads .catalogue-card > p:not(.catalogue-type) {
+  flex: 1;
+  margin: 0;
+  color: var(--rs-muted);
+}
+
+.catalogue-downloads .catalogue-download-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: var(--rs-navy);
+  color: #fff;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.catalogue-downloads .catalogue-download-link:hover {
+  background: var(--rs-navy-deep);
+}
+
+/* ---------- 2. RFQ workflow timeline ---------- */
+.workflow-section .workflow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.workflow-section .workflow::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--rs-navy) 0 8px, transparent 8px 16px);
+  opacity: 0.3;
+}
+
+.workflow-section .workflow-step {
+  position: relative;
+  padding: 0 8px;
+  text-align: center;
+}
+
+.workflow-section .workflow-marker {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 18px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--rs-navy);
+  color: #fff;
+  box-shadow: 0 0 0 6px #f4f7f8;
+}
+
+.workflow-section .workflow-phase {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rs-navy);
+}
+
+.workflow-section .workflow-step h3 {
+  margin: 6px 0 10px;
+  font-size: 1.1rem;
+  color: var(--rs-ink);
+}
+
+.workflow-section .workflow-timeline {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--rs-amber-soft);
+  color: #7a4b00;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: none;
+}
+
+.workflow-section .workflow-step > p:last-child {
+  margin: 0;
+  color: var(--rs-muted);
+  font-size: 0.93rem;
+}
+
+@media (max-width: 900px) {
+  .workflow-section .workflow { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; }
+  .workflow-section .workflow::before { display: none; }
+}
+
+@media (max-width: 600px) {
+  .workflow-section .workflow { grid-template-columns: 1fr; }
+  .workflow-section .workflow::before {
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 27px;
+    right: auto;
+    width: 2px;
+    height: auto;
+  }
+  .workflow-section .workflow-step { padding: 0 0 0 76px; text-align: left; }
+  .workflow-section .workflow-marker { position: absolute; left: 0; top: 0; margin: 0; }
+}
+
+/* ---------- 3. RFQ form ---------- */
+.rfq-form {
+  display: grid;
+  gap: 20px;
+  counter-reset: rfq;
+}
+
+.rfq-form .form-panel {
+  display: grid;
+  gap: 18px;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 22px;
+  border: 1px solid var(--rs-line);
+  border-radius: 14px;
+  background: var(--rs-paper);
+}
+
+.rfq-form .form-panel legend {
+  padding: 0 8px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--rs-navy);
+}
+
+.rfq-form .form-panel legend::before {
+  counter-increment: rfq;
+  content: counter(rfq);
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--rs-navy);
+  color: #fff;
+  font-size: 0.8rem;
+  vertical-align: middle;
+}
+
+.rfq-form .form-two-column {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.rfq-form .field-group {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.rfq-form .field-group label,
+.rfq-form .field-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--rs-ink);
+}
+
+.rfq-form .field-group small {
+  color: var(--rs-muted);
+  font-size: 0.78rem;
+}
+
+.rfq-form input:not([type='checkbox']):not([type='radio']):not([type='file']),
+.rfq-form textarea,
+.rfq-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d3d5e8;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--rs-ink);
+  font: inherit;
+  color-scheme: light;
+}
+
+.rfq-form textarea { min-height: 130px; resize: vertical; }
+
+.rfq-form input:not([type='checkbox']):not([type='radio']):not([type='file']):focus,
+.rfq-form textarea:focus,
+.rfq-form select:focus {
+  outline: none;
+  border-color: var(--rs-navy);
+  box-shadow: 0 0 0 3px rgba(49, 50, 125, 0.15);
+}
+
+/* Checkboxes and radios as selectable cards */
+.rfq-form .checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.rfq-form .checkbox-label,
+.rfq-form .radio-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border: 1px solid #d3d5e8;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--rs-ink);
+  font-size: 0.9rem;
+  line-height: 1.35;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.rfq-form .checkbox-label input,
+.rfq-form .radio-label input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--rs-navy);
+}
+
+.rfq-form .checkbox-label:hover,
+.rfq-form .radio-label:hover { border-color: var(--rs-navy); }
+
+.rfq-form .checkbox-label:has(input:checked),
+.rfq-form .radio-label:has(input:checked) {
+  border-color: var(--rs-navy);
+  background: var(--rs-tint);
+  font-weight: 600;
+}
+
+/* Drag-and-drop upload zone */
+.rfq-form .upload-zone {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px;
+  border: 2px dashed var(--rs-navy);
+  border-radius: 12px;
+  background: #fff;
+  transition: background 0.15s ease;
+}
+
+.rfq-form .upload-zone:hover,
+.rfq-form .upload-zone:focus-within { background: var(--rs-tint); }
+
+.rfq-form .upload-zone input[type='file'] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.rfq-form .upload-zone .upload-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--rs-amber-soft);
+  color: var(--rs-navy);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.rfq-form .upload-copy { display: grid; gap: 2px; min-width: 0; }
+.rfq-form .upload-copy strong { color: var(--rs-ink); overflow-wrap: anywhere; }
+.rfq-form .upload-copy small { color: var(--rs-muted); }
+
+/* Submit and error */
+.rfq-form > .btn { width: 100%; padding: 15px 20px; font-size: 1rem; }
+
+.rfq-form .form-error {
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid #fecdca;
+  border-radius: 10px;
+  background: #fef3f2;
+  color: #b42318;
+}
+
+@media (max-width: 640px) {
+  .catalogue-downloads .catalogue-grid,
+  .rfq-form .form-two-column,
+  .rfq-form .checkbox-grid { grid-template-columns: 1fr; }
+  .rfq-form .form-panel { padding: 16px; }
+}
+
+/* ---------- 4. Contact page: invisible ghost button on dark panel ---------- */
+.contact-info .btn-ghost-dark {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+}
+.contact-info .btn-ghost-dark:hover { background: rgba(255, 255, 255, 0.12) !important; }
+
+/* ---------- Contact section background (restore) ---------- */
+section.section.contact {
+  background: linear-gradient(135deg, #456496, #17367b) !important;
+  color: #fff;
+}
+section.section.contact .contact-info h2,
+section.section.contact .contact-item a {
+  color: #fff;
+}
+section.section.contact .section-kicker {
+  color: #f2ad2f;
+}

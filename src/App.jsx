@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import './multipage.css'
+import './sections.css'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 
 import Header from './components/Header'

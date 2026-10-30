@@ -11,18 +11,21 @@ const categories = [
 export default function QuoteForm() {
   const [submitted, setSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState('')
+  const [fileName, setFileName] = useState('')
   const [submissionMessage, setSubmissionMessage] = useState('')
   const [submissionTitle, setSubmissionTitle] = useState('RFQ received')
 
   function onAttachmentChange(event) {
-    const file = event.currentTarget.files?.[0]
-    if (file && file.size > 10 * 1024 * 1024) {
-      event.currentTarget.value = ''
-      setSubmitError('Please choose an attachment smaller than 10MB.')
-    } else {
-      setSubmitError('')
-    }
+  const file = event.currentTarget.files?.[0]
+  if (file && file.size > 10 * 1024 * 1024) {
+    event.currentTarget.value = ''
+    setFileName('')
+    setSubmitError('Please choose an attachment smaller than 10MB.')
+  } else {
+    setFileName(file ? file.name : '')
+    setSubmitError('')
   }
+}
 
   async function onSubmit(event) {
     event.preventDefault()
@@ -156,12 +159,24 @@ export default function QuoteForm() {
           />
         </div>
         <div className="field-group">
-          <label className="upload-field" htmlFor="rfq-attachment">
-            <span className="upload-icon">+</span>
-            <span><strong>Attach your procurement spreadsheet, RFQ, or BOM</strong><small>.pdf, .xlsx, .csv, .docx - maximum 10MB</small></span>
-          </label>
-          <input id="rfq-attachment" name="attachment" type="file" accept=".pdf,.xlsx,.csv,.docx" onChange={onAttachmentChange} />
-        </div>
+  <div className="upload-zone">
+    <input
+      id="rfq-attachment"
+      name="attachment"
+      type="file"
+      accept=".pdf,.xlsx,.csv,.docx"
+      aria-label="Attach your procurement spreadsheet, RFQ document or bill of materials"
+      onChange={onAttachmentChange}
+    />
+    <span className="upload-icon" aria-hidden="true">+</span>
+    <span className="upload-copy">
+      <strong>{fileName || 'Drag & drop your procurement spreadsheet, RFQ or BOM here'}</strong>
+      <small>
+        {fileName ? 'Click or drop to replace' : 'or click to browse · .pdf, .xlsx, .csv, .docx · max 10MB'}
+      </small>
+    </span>
+  </div>
+</div>
       </fieldset>
 
       <fieldset className="form-panel">

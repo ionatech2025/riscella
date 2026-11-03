@@ -1,92 +1,213 @@
 import { useState } from 'react'
 import { CONTACT } from '../data'
 
+const categories = [
+  'Chemical Reagents & Media',
+  'Laboratory Consumables (Plasticware/Glassware)',
+  'Safety Gear / PPE & Cold-Chain Sensitive Products',
+  'Heavy Lab Equipment & Hardware',
+]
+
 export default function QuoteForm() {
-  const [status, setStatus] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState('')
+  const [fileName, setFileName] = useState('')
+  const [submissionMessage, setSubmissionMessage] = useState('')
+  const [submissionTitle, setSubmissionTitle] = useState('RFQ received')
 
-  function isValidEmailOrPhone(value) {
-    const trimmed = value.trim()
+  function onAttachmentChange(event) {
+  const file = event.currentTarget.files?.[0]
+  if (file && file.size > 10 * 1024 * 1024) {
+    event.currentTarget.value = ''
+    setFileName('')
+    setSubmitError('Please choose an attachment smaller than 10MB.')
+  } else {
+    setFileName(file ? file.name : '')
+    setSubmitError('')
+  }
+}
 
-    if (!trimmed) return false
+  async function onSubmit(event) {
+    event.preventDefault()
+    setSubmitError('')
 
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)
-    if (emailOk) return true
+    try {
+      const form = event.currentTarget
+      const endpoint = import.meta.env.VITE_RFQ_ENDPOINT
 
-    const digitsOnly = trimmed.replace(/\D/g, '')
-    return digitsOnly.length >= 9 && digitsOnly.length <= 15
+      if (!endpoint) {
+        const values = new FormData(form)
+        const attachment = values.get('attachment')
+        const attachmentName =
+          attachment instanceof File && attachment.name
+            ? `\nAttachment selected: ${attachment.name} (please attach it to this email)`
+            : ''
+        const body = [
+          `Full name: ${values.get('name')}`,
+          `Company / institution: ${values.get('company')}`,
+          `Corporate email: ${values.get('email')}`,
+          `Industry / sector: ${values.get('sector')}`,
+          `Inventory categories: ${values.getAll('categories').join(', ') || 'Not specified'}`,
+          `Requested timeline: ${values.get('timeline')}`,
+          `Specialized handling: ${values.get('handling')}`,
+          `Payment terms: ${values.get('payment')}`,
+          '',
+          'Itemized requirements:',
+          values.get('requirements'),
+          attachmentName,
+        ].join('\n')
+
+        window.location.href =
+          `mailto:${CONTACT.email}?subject=${encodeURIComponent('B2B RFQ - Riscella Enterprises')}&body=${encodeURIComponent(body)}`
+        setSubmissionTitle('RFQ prepared')
+        setSubmissionMessage(
+          'Your email app is opening with your RFQ. If you selected a file, attach it to the email before sending.',
+        )
+        setSubmitted(true)
+        return
+      }
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: new FormData(form),
+      })
+
+      if (!response.ok) {
+        throw new Error(`RFQ submission failed with status ${response.status}`)
+      }
+
+      setSubmissionMessage(
+        'Thank you. Your request has been assigned to a technical procurement specialist. A formal quotation and lead-time analysis will be generated within 24 business hours.',
+      )
+      setSubmitted(true)
+    } catch (error) {
+      console.error('Unable to submit RFQ form.', error)
+      setSubmitError('We could not submit your RFQ. Please email the technical desk or try again.')
+    }
   }
 
-  function onSubmit(event) {
-    event.preventDefault()
-
-    const form = new FormData(event.currentTarget)
-    const name = String(form.get('name') ?? '').trim()
-    const company = String(form.get('company') ?? '').trim()
-    const email = String(form.get('email') ?? '').trim()
-    const message = String(form.get('message') ?? '').trim()
-
-    if (!name || !company || !email || !message) {
-      setStatus('Please fill in all fields so we can prepare the right response.')
-      return
-    }
-
-    if (!isValidEmailOrPhone(email)) {
-      setStatus('Please enter a valid email address or phone number.')
-      return
-    }
-
-    const body = encodeURIComponent(
-      `Name: ${name}\nInstitution / Company: ${company}\nEmail / Phone: ${email}\n\nRFQ / Message:\n${message}`,
-    )
-
-    window.location.href =
-      `mailto:${CONTACT.email}?subject=${encodeURIComponent('RFQ — Riscella Enterprises')}&body=${body}`
-
-    setStatus(
-      'Your email app is opening with your request. If it does not, send us a quick WhatsApp message instead.',
+  if (submitted) {
+    return (
+      <div className="form-success" role="status">
+        <h3>{submissionTitle}</h3>
+        <p>{submissionMessage}</p>
+      </div>
     )
   }
 
   return (
-    <form className="form" onSubmit={onSubmit}>
-      <div className="field-group">
-        <label htmlFor="rfq-name">Full name</label>
-        <input id="rfq-name" name="name" type="text" placeholder="e.g. Jane Mukasa" required />
-      </div>
+    <form
+      className="form rfq-form"
+      name="b2b-rfq"
+      method="POST"
+      encType="multipart/form-data"
+      onSubmit={onSubmit}
+    >
+      <input type="hidden" name="form-name" value="b2b-rfq" />
 
-      <div className="field-group">
-        <label htmlFor="rfq-company">Institution / Company</label>
-        <input id="rfq-company" name="company" type="text" placeholder="e.g. Quality Chemical Industries" required />
-      </div>
+      <fieldset className="form-panel">
+        <legend>Corporate &amp; vetting credentials</legend>
+        <div className="form-two-column">
+          <div className="field-group">
+            <label htmlFor="rfq-name">Full name</label>
+            <input id="rfq-name" name="name" type="text" placeholder="e.g. Sarah Jenkins" required />
+          </div>
+          <div className="field-group">
+            <label htmlFor="rfq-email">Corporate email address</label>
+            <input id="rfq-email" name="email" type="email" placeholder="name@institution.org" required />
+            <small>Please use your institutional or company domain.</small>
+          </div>
+          <div className="field-group">
+            <label htmlFor="rfq-company">Company / institution name</label>
+            <input id="rfq-company" name="company" type="text" placeholder="e.g. Apex Diagnostic Laboratories Ltd" required />
+          </div>
+          <div className="field-group">
+            <label htmlFor="rfq-sector">Industry / sector</label>
+            <select id="rfq-sector" name="sector" required defaultValue="">
+              <option value="" disabled>Select your sector</option>
+              <option>Clinical &amp; Pathology Diagnostics</option>
+              <option>Industrial Chemical / Advanced Manufacturing</option>
+              <option>Pharmaceutical / Biotech Production</option>
+              <option>Higher Education &amp; Academic Research</option>
+              <option>Other / Government Agency</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
 
-      <div className="field-group">
-        <label htmlFor="rfq-email">Email or phone</label>
-        <input
-          id="rfq-email"
-          name="email"
-          type="text"
-          inputMode="email"
-          placeholder="e.g. info@company.com or +256 700 000 000"
-          required
-        />
-      </div>
+      <fieldset className="form-panel">
+        <legend>Manifest &amp; requirements</legend>
+        <div className="field-group">
+          <span className="field-label">Inventory categories needed</span>
+          <div className="checkbox-grid">
+            {categories.map((category) => (
+              <label className="checkbox-label" key={category}>
+                <input type="checkbox" name="categories" value={category} />
+                <span>{category}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+        <div className="field-group">
+          <label htmlFor="rfq-requirements">Itemized requirements &amp; SKUs</label>
+          <textarea
+            id="rfq-requirements"
+            name="requirements"
+            rows="5"
+            placeholder="List part numbers, manufacturers, grades (e.g. Analytical, USP), and required quantities."
+            required
+          />
+        </div>
+        <div className="field-group">
+  <div className="upload-zone">
+    <input
+      id="rfq-attachment"
+      name="attachment"
+      type="file"
+      accept=".pdf,.xlsx,.csv,.docx"
+      aria-label="Attach your procurement spreadsheet, RFQ document or bill of materials"
+      onChange={onAttachmentChange}
+    />
+    <span className="upload-icon" aria-hidden="true">+</span>
+    <span className="upload-copy">
+      <strong>{fileName || 'Drag & drop your procurement spreadsheet, RFQ or BOM here'}</strong>
+      <small>
+        {fileName ? 'Click or drop to replace' : 'or click to browse · .pdf, .xlsx, .csv, .docx · max 10MB'}
+      </small>
+    </span>
+  </div>
+</div>
+      </fieldset>
 
-      <div className="field-group">
-        <label htmlFor="rfq-message">Your requirement</label>
-        <textarea
-          id="rfq-message"
-          name="message"
-          rows="6"
-          placeholder="Tell us the products, quantities, standards, urgency, and delivery details you need."
-          required
-        />
-      </div>
+      <fieldset className="form-panel">
+        <legend>Logistics &amp; procurement framework</legend>
+        <div className="form-two-column">
+          <div className="field-group">
+            <span className="field-label">Requested delivery timeline</span>
+            <label className="radio-label"><input type="radio" name="timeline" value="Urgent / Critical" required /> Urgent / Critical</label>
+            <label className="radio-label"><input type="radio" name="timeline" value="Standard Net 30 Days" /> Standard Net 30 days</label>
+            <label className="radio-label"><input type="radio" name="timeline" value="Routine Stock" /> Routine stock / standing order</label>
+          </div>
+          <div className="field-group">
+            <span className="field-label">Temperature / specialized handling</span>
+            <label className="radio-label"><input type="radio" name="handling" value="Cold-chain required" required /> Yes, cold-chain mandatory</label>
+            <label className="radio-label"><input type="radio" name="handling" value="Ambient storage" /> No, ambient storage is acceptable</label>
+          </div>
+          <div className="field-group">
+            <label htmlFor="rfq-payment">Preferred payment / billing terms</label>
+            <select id="rfq-payment" name="payment" required defaultValue="">
+              <option value="" disabled>Select payment terms</option>
+              <option>Corporate Purchase Order (PO) Processing</option>
+              <option>Net 30 Days Invoicing</option>
+              <option>Net 60 Days Invoicing</option>
+              <option>Advance T/T / Cash Before Delivery</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
 
-      <button className="btn btn-teal" type="submit">
-        Send Request
-      </button>
-
-      {status ? <p className="form-status">{status}</p> : null}
+      <button className="btn btn-teal" type="submit">Submit Official RFQ</button>
+      {submitError ? <p className="form-status form-error" role="alert">{submitError}</p> : null}
     </form>
   )
 }

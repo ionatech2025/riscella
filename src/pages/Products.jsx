@@ -1,9 +1,32 @@
+
 import { CATEGORIES, BRANDS } from '../data'
 import { Icon } from '../icons'
 import PageHero from '../components/PageHero'
-import product3Img from '../assets/image3.png'
+import { Link } from 'react-router-dom'
+import product3Img from '../assets/image3.webp'
+
+const catalogueFiles = [
+  {
+    title: 'Riscella Product Catalogue',
+    description:
+      'Explore Riscella Enterprises Limited’s laboratory products, chemicals, consumables, equipment, and scientific portfolios.',
+    file: 'Riscella Product Catalogue.pdf',
+    type: 'Product Catalogue',
+    size: '3.2 MB',
+  },
+  {
+    title: 'Riscella Company Profile',
+    description:
+      'Learn about Riscella Enterprises Limited, its business capabilities, product portfolios, and commitment to serving laboratories and industries.',
+    file: 'Riscella Company Profile.pdf',
+    type: 'Company Profile',
+    size: '8.3 MB',
+  },
+]
 
 export default function Products() {
+  const cataloguePath = `${import.meta.env.BASE_URL}catalogues/`
+
   return (
     <>
       <PageHero
@@ -73,6 +96,60 @@ export default function Products() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Catalogue downloads */}
+      <section
+        className="section paper catalogue-downloads"
+        id="catalogue-downloads"
+      >
+        <div className="wrap">
+          <p className="section-kicker">Resources & Downloads</p>
+          <h2 className="heading-lg">Explore our catalogues</h2>
+          <p>
+            Download our product catalogue and company profile to learn more
+            about Riscella Enterprises Limited and its offerings.
+          </p>
+
+          <div className="catalogue-grid">
+            {catalogueFiles.map((catalogue) => (
+              <article className="catalogue-card" key={catalogue.file}>
+                <div className="catalogue-icon">
+                  <Icon name="file-text" />
+                </div>
+
+                <p className="catalogue-type">{catalogue.type}</p>
+                <h3>{catalogue.title}</h3>
+                <p>{catalogue.description}</p>
+
+                <a
+                  className="catalogue-download-link"
+                  href={`${cataloguePath}${encodeURIComponent(catalogue.file)}`}
+                  download={catalogue.file}
+                  aria-label={`Download ${catalogue.title} PDF`}
+                >
+                  <Icon name="download" />
+                  Download PDF
+                </a>
+              </article>
+            ))}
+          </div>
+
+                    <div className="how-to-pdf">
+            <h3>Three simple steps to secure your bulk quotation</h3>
+            <ol>
+              <li><strong>Open the PDF</strong> and find your SKU, CAS number or part number.</li>
+              <li><strong>Compile your manifest:</strong> quantities, sizes and delivery frequency.</li>
+              <li><strong>Paste or upload it</strong> in our RFQ form. We reply within 24 business hours.</li>
+            </ol>
+            <Link className="btn btn-teal" to="/contact#rfq">Go to the Request for Quote form</Link>
+          </div>
+
+          <p className="direct-import">
+            <strong>Direct authorized importing:</strong> Riscella imports listed materials directly
+            from authorized global manufacturers, so every catalogue item maps to authentic factory batches.
+          </p>
         </div>
       </section>
     </>

@@ -38,5 +38,27 @@ content.
 ## 5. Development
 npm run dev
 
-If deploying as a Cloudflare Worker/SPA, make sure the deployment serves index.html
-for unknown application routes so direct visits such as /products do not return 404.
+## 6. Hosting and RFQ submissions
+The built site is hosting-provider neutral. Any static host can serve the Vite
+build, provided it supports SPA fallback to `index.html` for routes such as
+`/products` and `/contact`.
+
+The repository includes a `_redirects` file for hosts such as Netlify and a
+GitHub Pages `404.html` fallback. Other static hosts should configure their
+equivalent rewrite from the listed application routes to `index.html`.
+
+The RFQ form works without a form vendor by opening the visitor's email client.
+If the selected attachment should be uploaded automatically, set
+`VITE_RFQ_ENDPOINT` to a serverless or form-processing endpoint before building:
+
+```powershell
+$env:VITE_RFQ_ENDPOINT = "https://your-form-endpoint.example/submit"
+npm run build
+```
+
+The endpoint must accept a `POST` multipart form request. Do not put private
+API keys in `VITE_` variables because Vite exposes them to the browser.
+
+Product resources are served from `public/catalogues/`. Keep catalogue
+filenames free of trailing spaces so download URLs remain reliable across
+hosting providers.

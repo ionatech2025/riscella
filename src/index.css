@@ -218,7 +218,7 @@ textarea {
   min-height: 320px;
   color: var(--white);
   overflow: hidden;
-  background: var(--navy);
+  background: #52606d;
 }
 
 
@@ -236,7 +236,7 @@ textarea {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(35, 36, 94, 0.92) 0%, rgba(49, 50, 125, 0.72) 42%, rgba(35, 36, 94, 0.18) 100%);
+    linear-gradient(90deg, rgba(31, 41, 55, 0.58) 0%, rgba(71, 85, 105, 0.36) 42%, rgba(71, 85, 105, 0.08) 100%);
 }
 
 .hero-copy {
@@ -277,7 +277,7 @@ textarea {
   overflow: hidden;
   display: flex;
   align-items: center;
-  background: rgba(6, 49, 120, 0.55);
+  background: #52606d;
 }
 
 .page-hero-image {
@@ -293,7 +293,7 @@ textarea {
 .page-hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(6, 49, 120, 0.55);
+  background: rgba(31, 41, 55, 0.4);
   z-index: 1;
 }
 
@@ -320,7 +320,7 @@ textarea {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(6, 61, 187, 0.45);
+  background: rgba(31, 41, 55, 0.06);
 }
 
 .page-hero-content {

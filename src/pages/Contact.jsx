@@ -1,4 +1,4 @@
-import { CONTACT, PHONES } from '../data'
+import { CONTACT, PHONES, PROCUREMENT_FAQ } from '../data'
 import { Icon } from '../icons'
 import { Link } from 'react-router-dom'
 import QuoteForm from '../components/QuoteForm'
@@ -6,7 +6,6 @@ import PageHero from '../components/PageHero'
 import laboratoryImg from '../assets/Laboratory.jpg'
 
 export default function Contact() {
-  const whatsappNumber = '0705728194'
   const whatsappHref = `https://wa.me/256705728194?text=${encodeURIComponent('Hello Riscella Enterprises Limited, I would like to request a quote for laboratory products and supplies.')}`
 
   return (
@@ -79,7 +78,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="contact-form-panel">
+            <div className="contact-form-panel" id="rfq">
               <p className="section-kicker">Request a Quote</p>
               <h2>Send your requirements</h2>
               <p className="request-help-text">
@@ -87,6 +86,28 @@ export default function Contact() {
               </p>
               <QuoteForm />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section faq-section">
+        <div className="wrap faq-layout">
+          <div>
+            <p className="section-kicker">Procurement &amp; compliance</p>
+            <h2 className="heading-lg">Answers for institutional buyers.</h2>
+            <p className="lede">
+              Review common questions while preparing your requirements. For
+              product-specific guidance, include your SKUs and standards in the
+              RFQ above.
+            </p>
+          </div>
+          <div className="faq-list">
+            {PROCUREMENT_FAQ.map((item) => (
+              <details className="faq-item" key={item.question}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

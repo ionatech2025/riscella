@@ -143,6 +143,29 @@ export function Icon({ name, size = 20 }) {
         <path d="M9 8h.01M15 8h.01M9 16h.01M15 16h.01" />
       </>
     ),
+    globe: (
+      <>
+        <circle cx="12" cy="12" r="8.5" />
+        <path d="M3.5 12h17M12 3.5c2.2 2.4 3.3 5.2 3.3 8.5S14.2 18.1 12 20.5c-2.2-2.4-3.3-5.2-3.3-8.5S9.8 5.9 12 3.5z" />
+      </>
+    ),
+    alert: (
+      <>
+        <path d="m12 3 9 17H3L12 3z" />
+        <path d="M12 9v5M12 17h.01" />
+      </>
+    ),
+    'file-text': (
+      <>
+        <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+        <path d="M14 3v5h5M8 13h8M8 17h6" />
+      </>
+    ),
+    download: (
+      <>
+        <path d="M12 3v12M7 10l5 5 5-5M5 21h14" />
+      </>
+    ),
   }
 
   return <Svg size={size}>{paths[name]}</Svg>

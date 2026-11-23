@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { PROCUREMENT_WORKFLOW, STEPS } from '../data'
 import { Icon } from '../icons'
 import PageHero from '../components/PageHero'
-import equipmentImg from '../assets/protectives.jpg'
+import equipmentImg from '../assets/5hero.jpg'
 
 export default function HowToOrder() {
   return (

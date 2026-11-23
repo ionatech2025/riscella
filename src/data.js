@@ -192,6 +192,27 @@ export const SECTORS = [
   },
 ]
 
+export const MARKET_SOLUTION_CARDS = [
+  {
+    icon: 'microscope',
+    title: 'Clinical & Analytical Laboratories',
+    desc: 'High-purity reagents, analytical standards, cell culture media, diagnostic plasticware, and precision pipetting systems backed by batch traceability, Lot CoAs, and SDS documentation.',
+    action: 'Request Laboratory Catalog & RFQ',
+  },
+  {
+    icon: 'factory',
+    title: 'Industrial & Advanced Manufacturing',
+    desc: 'Bulk manufacturing chemicals, production consumables, cleanroom supplies, and industrial safety gear with zero-downtime continuity, batch uniformity, regulatory alignment, and scalable pricing.',
+    action: 'Request Bulk Manufacturing Quote',
+  },
+  {
+    icon: 'grad',
+    title: 'Higher Education & Academic Research',
+    desc: 'Glassware, educational reagents, safety apparatus, storage cabinets, and routine consumables with flexible onboarding, split-shipment scheduling, and institutional PO compatibility.',
+    action: 'Access Academic Procurement Portal',
+  },
+]
+
 export const CLIENTS = [
   {
     name: 'DEI Biopharma',

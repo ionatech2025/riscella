@@ -82,6 +82,21 @@ export default function About() {
               </span>
             ))}
           </div>
+
+          <div className="commitment-grid">
+            {[
+              ['Quality', 'Every solution meets standards for quality, accuracy, and reliability and is backed by trusted manufacturers.'],
+              ['Integrity', 'We conduct business with honesty, transparency, accountability, and respect for every commitment.'],
+              ['Innovation', 'We adopt better technologies and scientific practices to support modern laboratories and industries.'],
+              ['Customer focus', 'We respond to each customer’s unique needs with tailored solutions and professional support.'],
+              ['Reliability', 'Customers can depend on consistent product quality, timely delivery, and dependable technical support.'],
+            ].map(([title, desc]) => (
+              <article className="commitment-card" key={title}>
+                <h3>{title}</h3>
+                <p>{desc}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

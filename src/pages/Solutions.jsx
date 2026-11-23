@@ -1,4 +1,5 @@
-import { CLIENTS, SECTORS } from '../data'
+import { CLIENTS, MARKET_SOLUTION_CARDS, SECTORS } from '../data'
+import { Link } from 'react-router-dom'
 import { Icon } from '../icons'
 import PageHero from '../components/PageHero'
 import solutionImg from '../assets/equip.jpg'
@@ -17,6 +18,17 @@ export default function Solutions() {
         <div className="wrap">
           <p className="section-kicker">Sectors We Serve</p>
           <h2 className="heading-lg">Market-specific solutions</h2>
+
+          <div className="market-solution-grid">
+            {MARKET_SOLUTION_CARDS.map((solution) => (
+              <article className="market-solution-card" key={solution.title}>
+                <div className="market-solution-icon"><Icon name={solution.icon} size={24} /></div>
+                <h3>{solution.title}</h3>
+                <p>{solution.desc}</p>
+                <Link className="btn btn-teal" to="/contact#rfq">{solution.action}</Link>
+              </article>
+            ))}
+          </div>
 
           <div className="sectors">
             {SECTORS.map((sector) => (

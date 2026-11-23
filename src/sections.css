@@ -18,7 +18,7 @@
 /* ---------- 1. Catalogue download cards ---------- */
 .catalogue-downloads .catalogue-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
   margin-top: 32px;
 }
@@ -36,6 +36,56 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.catalogue-downloads .catalogue-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  gap: 8px;
+  margin: 18px 0 10px;
+  padding: 12px 0;
+  border-top: 1px solid var(--rs-line);
+  border-bottom: 1px solid var(--rs-line);
+}
+.catalogue-downloads .catalogue-meta div { min-width: 0; }
+.catalogue-downloads .catalogue-meta dt {
+  color: var(--rs-muted);
+  font-size: 0.66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.catalogue-downloads .catalogue-meta dd {
+  margin: 2px 0 0;
+  color: var(--rs-ink);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+.catalogue-downloads .catalogue-note {
+  min-height: 44px;
+  color: var(--rs-muted);
+  font-size: 0.82rem;
+}
+.catalogue-downloads .catalogue-actions {
+  display: grid;
+  width: 100%;
+  gap: 10px;
+  margin-top: 16px;
+}
+.catalogue-downloads .catalogue-download-link,
+.catalogue-downloads .catalogue-quote-link {
+  justify-content: center;
+  text-align: center;
+}
+.catalogue-downloads .catalogue-quote-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--rs-navy);
+  border-radius: 10px;
+  color: var(--rs-navy);
+  font-weight: 750;
+}
+
 .catalogue-downloads .catalogue-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 50px rgba(35, 36, 94, 0.16);
@@ -48,8 +98,8 @@
   height: 52px;
   margin-bottom: 16px;
   border-radius: 12px;
-  background: var(--rs-amber-soft);
-  color: var(--rs-navy);
+  background: var(--rs-navy);
+  color: #fff;
 }
 
 .catalogue-downloads .catalogue-type {
@@ -350,8 +400,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--rs-amber-soft);
-  color: var(--rs-navy);
+  background: var(--rs-navy);
+  color: #fff;
   font-size: 1.5rem;
   font-weight: 700;
 }
@@ -377,6 +427,7 @@
   .rfq-form .form-two-column,
   .rfq-form .checkbox-grid { grid-template-columns: 1fr; }
   .rfq-form .form-panel { padding: 16px; }
+  .catalogue-downloads .catalogue-meta { grid-template-columns: 1fr; }
 }
 
 /* ---------- 4. Contact page: invisible ghost button on dark panel ---------- */

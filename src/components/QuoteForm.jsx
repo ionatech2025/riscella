@@ -16,16 +16,21 @@ export default function QuoteForm() {
   const [submissionTitle, setSubmissionTitle] = useState('RFQ received')
 
   function onAttachmentChange(event) {
-  const file = event.currentTarget.files?.[0]
-  if (file && file.size > 10 * 1024 * 1024) {
-    event.currentTarget.value = ''
-    setFileName('')
-    setSubmitError('Please choose an attachment smaller than 10MB.')
-  } else {
-    setFileName(file ? file.name : '')
-    setSubmitError('')
+    const file = event.currentTarget.files?.[0]
+    const allowedExtensions = /\.(pdf|xlsx|csv|docx)$/i
+    if (file && file.size > 10 * 1024 * 1024) {
+      event.currentTarget.value = ''
+      setFileName('')
+      setSubmitError('Please choose an attachment smaller than 10MB.')
+    } else if (file && !allowedExtensions.test(file.name)) {
+      event.currentTarget.value = ''
+      setFileName('')
+      setSubmitError('Please choose a PDF, XLSX, CSV, or DOCX attachment.')
+    } else {
+      setFileName(file ? file.name : '')
+      setSubmitError('')
+    }
   }
-}
 
   async function onSubmit(event) {
     event.preventDefault()
@@ -36,6 +41,27 @@ export default function QuoteForm() {
       const endpoint = import.meta.env.VITE_RFQ_ENDPOINT
 
       if (!endpoint) {
+        const isNetlify =
+          window.location.hostname !== 'localhost' &&
+          (window.location.hostname.endsWith('.netlify.app') ||
+            window.location.hostname === 'riscella.com' ||
+            window.location.hostname === 'www.riscella.com')
+
+        if (isNetlify) {
+          const response = await fetch('/', {
+            method: 'POST',
+            body: new FormData(form),
+          })
+          if (!response.ok) {
+            throw new Error(`RFQ submission failed with status ${response.status}`)
+          }
+          setSubmissionMessage(
+            'Thank you. Your request has been assigned to a technical procurement specialist. A formal quotation and lead-time analysis will be generated within 24 business hours.',
+          )
+          setSubmitted(true)
+          return
+        }
+
         const values = new FormData(form)
         const attachment = values.get('attachment')
         const attachmentName =
@@ -100,6 +126,7 @@ export default function QuoteForm() {
       className="form rfq-form"
       name="b2b-rfq"
       method="POST"
+      data-netlify="true"
       encType="multipart/form-data"
       onSubmit={onSubmit}
     >
@@ -115,7 +142,7 @@ export default function QuoteForm() {
           <div className="field-group">
             <label htmlFor="rfq-email">Corporate email address</label>
             <input id="rfq-email" name="email" type="email" placeholder="name@institution.org" required />
-            <small>Please use your institutional or company domain.</small>
+            {/* <small>Please use your institutional or company domain.</small> */}
           </div>
           <div className="field-group">
             <label htmlFor="rfq-company">Company / institution name</label>

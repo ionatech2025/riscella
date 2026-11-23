@@ -3,7 +3,32 @@ import { CATEGORIES, BRANDS } from '../data'
 import { Icon } from '../icons'
 import PageHero from '../components/PageHero'
 import { Link } from 'react-router-dom'
-import product3Img from '../assets/image3.webp'
+import product3Img from '../assets/hero.jpg'
+import shimadzuLogo from '../assets/brand 1.jpg'
+import pallavLogo from '../assets/brand 2.jpg'
+import scharlabLogo from '../assets/brand 3.jpg'
+import machereyNagelLogo from '../assets/brand 4.jpg'
+import biobaseLogo from '../assets/brand 5.jpg'
+import qcilLogo from '../assets/brand 6.jpg'
+import kpiLogo from '../assets/brand 7.jpg'
+import merckLogo from '../assets/brand 8.jpg'
+import electrolabLogo from '../assets/brand 9.jpg'
+import lobaLogo from '../assets/brand 10.jpg'
+import reageconLogo from '../assets/brand 11.jpg'
+
+const brandLogos = [
+  { name: 'Merck', image: merckLogo },
+  { name: 'Reagecon', image: reageconLogo },
+  { name: 'Pallav', image: pallavLogo },
+  { name: 'Loba Chemie', image: lobaLogo },
+  { name: 'ELECTROLAB', image: electrolabLogo },
+  { name: 'KPI', image: kpiLogo },
+  { name: 'BIOBASE', image: biobaseLogo },
+  { name: 'Scharlab', image: scharlabLogo },
+  { name: 'Shimadzu', image: shimadzuLogo },
+  { name: 'Macherey-Nagel', image: machereyNagelLogo },
+  { name: 'QCIL', image: qcilLogo },
+]
 
 const catalogueFiles = [
   {
@@ -12,7 +37,12 @@ const catalogueFiles = [
       'Explore Riscella Enterprises Limited’s laboratory products, chemicals, consumables, equipment, and scientific portfolios.',
     file: 'Riscella Product Catalogue.pdf',
     type: 'Product Catalogue',
-    size: '3.2 MB',
+    format: 'Interactive PDF',
+    size: '3.0 MB',
+    version: 'v2026.4',
+    action: 'Download Chemical & Laboratory Catalogue (PDF)',
+    secondary: 'Request Pricing for this Line',
+    note: 'All listed items are backed by lot-specific Certificates of Analysis (CoA) and Safety Data Sheets (SDS).',
   },
   {
     title: 'Riscella Company Profile',
@@ -20,7 +50,25 @@ const catalogueFiles = [
       'Learn about Riscella Enterprises Limited, its business capabilities, product portfolios, and commitment to serving laboratories and industries.',
     file: 'Riscella Company Profile.pdf',
     type: 'Company Profile',
-    size: '8.3 MB',
+    format: 'Print-Ready Company Profile',
+    size: '7.9 MB',
+    version: 'v2026.2',
+    action: 'Download Company Profile (PDF)',
+    secondary: 'Request a Company Profile Quote',
+    note: 'Review our capabilities, supply model, and institutional procurement support.',
+  },
+  {
+    title: 'Industrial Safety & Protective Equipment',
+    description:
+      'Medical-grade gloves, splash protection, respirators, cleanroom apparel, eye protection, and safety equipment reviewed for EN/CE-compliant applications.',
+    file: 'Riscella Product Catalogue.pdf',
+    type: 'Safety Equipment Guide',
+    format: 'Full Illustrated Guide',
+    size: '3.0 MB',
+    version: 'v2026.1',
+    action: 'Download Safety Guide (PDF)',
+    secondary: 'Request Wholesale Safety Pricing',
+    note: 'EN/CE compliance ratings should be confirmed against the exact manufacturer part number.',
   },
 ]
 
@@ -86,6 +134,14 @@ export default function Products() {
           <p className="section-kicker">Global Portfolios</p>
           <h2 className="heading-lg">Authorized brands &amp; global portfolios</h2>
 
+          <div className="brand-logo-grid" aria-label="Authorized brand logos">
+            {brandLogos.map((brand) => (
+              <div className="brand-logo-card" key={brand.name}>
+                <img src={brand.image} alt={`${brand.name} logo`} />
+              </div>
+            ))}
+          </div>
+
           <div className="brand-cards">
             {BRANDS.map((brand) => (
               <article className="brand-card" key={brand.name}>
@@ -114,7 +170,7 @@ export default function Products() {
 
           <div className="catalogue-grid">
             {catalogueFiles.map((catalogue) => (
-              <article className="catalogue-card" key={catalogue.file}>
+              <article className="catalogue-card" key={catalogue.title}>
                 <div className="catalogue-icon">
                   <Icon name="file-text" />
                 </div>
@@ -122,16 +178,26 @@ export default function Products() {
                 <p className="catalogue-type">{catalogue.type}</p>
                 <h3>{catalogue.title}</h3>
                 <p>{catalogue.description}</p>
-
-                <a
-                  className="catalogue-download-link"
-                  href={`${cataloguePath}${encodeURIComponent(catalogue.file)}`}
-                  download={catalogue.file}
-                  aria-label={`Download ${catalogue.title} PDF`}
-                >
-                  <Icon name="download" />
-                  Download PDF
-                </a>
+                <dl className="catalogue-meta">
+                  <div><dt>Format</dt><dd>{catalogue.format}</dd></div>
+                  <div><dt>File size</dt><dd>{catalogue.size}</dd></div>
+                  <div><dt>Latest version</dt><dd>{catalogue.version}</dd></div>
+                </dl>
+                <p className="catalogue-note">{catalogue.note}</p>
+                <div className="catalogue-actions">
+                  <a
+                    className="catalogue-download-link"
+                    href={`${cataloguePath}${encodeURIComponent(catalogue.file)}`}
+                    download={catalogue.file}
+                    aria-label={`${catalogue.action}; ${catalogue.size}`}
+                  >
+                    <Icon name="download" />
+                    {catalogue.action}
+                  </a>
+                  <Link className="catalogue-quote-link" to="/contact#rfq">
+                    {catalogue.secondary}
+                  </Link>
+                </div>
               </article>
             ))}
           </div>

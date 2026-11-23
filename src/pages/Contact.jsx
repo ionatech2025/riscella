@@ -90,25 +90,20 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="section faq-section">
-        <div className="wrap faq-layout">
-          <div>
+      <section className="section paper faq-section">
+        <div className="wrap">
+          <aside className="faq-panel" aria-label="Procurement and compliance FAQs">
             <p className="section-kicker">Procurement &amp; compliance</p>
-            <h2 className="heading-lg">Answers for institutional buyers.</h2>
-            <p className="lede">
-              Review common questions while preparing your requirements. For
-              product-specific guidance, include your SKUs and standards in the
-              RFQ above.
-            </p>
-          </div>
-          <div className="faq-list">
-            {PROCUREMENT_FAQ.map((item) => (
-              <details className="faq-item" key={item.question}>
-                <summary>{item.question}</summary>
-                <p>{item.answer}</p>
-              </details>
-            ))}
-          </div>
+            <h2 className="heading-lg">Frequently asked questions</h2>
+            <div className="faq-list">
+              {PROCUREMENT_FAQ.map((item) => (
+                <details className="faq-item" key={item.question}>
+                  <summary>{item.question}</summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </aside>
         </div>
       </section>
     </>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import riscellaLogo from '../assets/riscella-logo.webp'
 import { CONTACT, PHONES } from '../data'
+import { Icon } from '../icons'
 
 export default function Footer() {
   return (
@@ -29,11 +30,20 @@ export default function Footer() {
         <div className="footer-col">
           <h4>Quick contacts</h4>
           {PHONES.map((p) => (
-            <a key={p} href={`tel:${p.replace(/\s/g, '')}`}>{p}</a>
+            <a className="footer-contact-row" key={p} href={`tel:${p.replace(/\s/g, '')}`}>
+              <span className="footer-contact-icon"><Icon name="phone" size={16} /></span>
+              <span>{p}</span>
+            </a>
           ))}
-          <a href="https://wa.me/256705728194" target="_blank" rel="noreferrer">WhatsApp</a>
+          <a className="footer-contact-row" href="https://wa.me/256705728194" target="_blank" rel="noreferrer">
+            <span className="footer-contact-icon"><Icon name="whatsapp" size={16} /></span>
+            <span>WhatsApp</span>
+          </a>
           <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
-          <span>{CONTACT.address}</span>
+          <span className="footer-contact-row">
+            <span className="footer-contact-icon"><Icon name="pin" size={16} /></span>
+            <span>{CONTACT.address}</span>
+          </span>
           <span>Working hours: Mon–Sat, 8:00AM–6:00PM (EAT)</span>
         </div>
       </div>
